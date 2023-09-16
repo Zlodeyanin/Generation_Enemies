@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _enemy;
+    [SerializeField] private EnemyMovement _enemy;
     [SerializeField] private Transform _currentSpawnPosition;
     [SerializeField] private int[] _directions;
 
@@ -45,8 +45,8 @@ public class Spawner : MonoBehaviour
         while (_isSpawn)
         {
             int index = Random.Range(spawmPointsMinIndex, spawnPointsMaxIndex);
-            GameObject enemy = Instantiate(_enemy, _spawnPoints[index].transform);
-            var movementController = enemy.GetComponent<EnemyMowemetContoller>();
+            GameObject enemy = Instantiate(_enemy.gameObject, _spawnPoints[index].transform);
+            EnemyMovement movementController = enemy.GetComponent<EnemyMovement>();
             movementController.Init(_directions[index]);
             yield return twoSeconds;
         }
