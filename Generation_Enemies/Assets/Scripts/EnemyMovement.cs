@@ -1,27 +1,32 @@
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
-    private int _direction;
-    private int _directionRignt = 1;
-    private float _zeroMove = 0;
+    private SpriteRenderer _flip;
+    private TargetMovement _target;
 
-    public void Init(int direction)
+    public void Init(TargetMovement paw)
     {
-        _direction = direction;
+        _target = paw;
+    }
+
+    private void Start()
+    {
+        _flip = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        if (_direction == _directionRignt)
-        {
-            transform.Translate(_speed * Time.deltaTime, _zeroMove, _zeroMove);
-        }
+        Vector3 target = _target.GetComponent<Transform>().position;
+
+        if (target.x > transform.position.x)
+            _flip.flipX = true;
         else
-        {
-            transform.Translate((_speed * Time.deltaTime) * -1, _zeroMove, _zeroMove);
-        }
+            _flip.flipX = false;
+
+        transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
     }
 }
