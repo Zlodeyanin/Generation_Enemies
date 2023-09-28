@@ -3,16 +3,21 @@ using UnityEngine;
 public class TargetMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] private Transform _endPoint;
 
-    private Vector2 _endPosition = new Vector2(18f, 0f);
-    private Vector2 _startPosition = new Vector2(-7.8f,0f);
+    private Vector2 _startPosition;
     private float _zeroMove = 0;
+
+    private void Start()
+    {
+        _startPosition = transform.position;
+    }
 
     private void Update()
     {
-        if (transform.position.x > _endPosition.x)
+        if (transform.position.x > _endPoint.position.x)
         {
-            transform.Translate(_startPosition.x *3, _zeroMove, _zeroMove);
+            transform.position = _startPosition;
         }
         else
         {

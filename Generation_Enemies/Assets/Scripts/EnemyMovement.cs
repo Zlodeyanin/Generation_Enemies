@@ -20,13 +20,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        Vector3 target = _target.GetComponent<Transform>().position;
-
-        if (target.x > transform.position.x)
-            _flip.flipX = true;
-        else
-            _flip.flipX = false;
-
-        transform.position = Vector3.MoveTowards(transform.position, target, _speed * Time.deltaTime);
+        _flip.flipX = true ? _target.transform.position.x > transform.position.x : _target.transform.position.x < transform.position.x;
+        transform.position = Vector3.MoveTowards(transform.position, _target.transform.position, _speed * Time.deltaTime);
     }
 }
