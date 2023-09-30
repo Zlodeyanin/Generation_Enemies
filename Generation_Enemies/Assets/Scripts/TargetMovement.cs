@@ -14,7 +14,7 @@ public class TargetMovement : MonoBehaviour
     }
 
     private void Update()
-    {
+    {        
         if (transform.position.x > _endPoint.position.x)
         {
             transform.position = _startPosition;

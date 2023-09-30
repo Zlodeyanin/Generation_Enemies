@@ -4803,15 +4803,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8912463226e4bc245ae9d9bb51b92fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy:
+  _spawnEnemies:
   - {fileID: 998338366364112933, guid: dfaf9b352061aaa46976589a9d760372, type: 3}
   - {fileID: 3637554690993957321, guid: 5943f2e4d9d221b449199ce2009a20c9, type: 3}
   - {fileID: 2986226772638157424, guid: 515e733603a76dc48915c5aa38c02723, type: 3}
-  _targets:
+  _enemyTargets:
   - {fileID: 1914564685}
   - {fileID: 1235886238}
   - {fileID: 1802274365}
-  _currentSpawnPosition: {fileID: 1455961414}
+  _enemiesSpawnPosition: {fileID: 1455961414}
 --- !u!1 &1678261257
 GameObject:
   m_ObjectHideFlags: 0
